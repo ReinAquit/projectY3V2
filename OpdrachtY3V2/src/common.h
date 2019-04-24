@@ -9,7 +9,7 @@
 #define COMMON_H_
 
 //System clock in Hz
-//#define sysclock 8000000
+#define sysclock 168000000
 
 //True and false used for quick 1 & 0
 #define TRUE  1
