@@ -221,15 +221,15 @@ void USART_DeInit(USART_TypeDef* USARTx)
   }
   else if (USARTx == UART7)
   {
-    RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART7, ENABLE);
-    RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART7, DISABLE);
+    //RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART7, ENABLE);
+    //RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART7, DISABLE);
   }     
   else
   {
     if (USARTx == UART8)
     { 
-      RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART8, ENABLE);
-      RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART8, DISABLE);
+      //RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART8, ENABLE);
+      //RCC_APB1PeriphResetCmd(RCC_APB1Periph_UART8, DISABLE);
     }
   }
 }

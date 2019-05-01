@@ -8,7 +8,11 @@
 #ifndef COMMON_H_
 #define COMMON_H_
 
-//System clock in Hz
+//Includes
+#include "stm32f4xx.h"
+#include <stm32_ub_vga_screen.h>
+
+//System clock in Hzzzz
 #define sysclock 168000000
 
 //True and false used for quick 1 & 0
