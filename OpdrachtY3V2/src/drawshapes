@@ -1,0 +1,12 @@
+//--------------------------------------------------------------
+// File     : main.c
+// Datum    : 05.2019
+// Version  : 1.0
+// Autor    : Thalita van der Haven
+// CPU      : STM32F4
+// IDE      : Atollic True STUDIO
+// Module   : 
+// Function : put shapes in memory of vga screen
+//--------------------------------------------------------------
+
+#include "stm32_ub_vga_screen.h"
