@@ -1,0 +1,103 @@
+/*
+ * ui.c
+ *
+ *  Created on: 21 May 2019
+ *      Author: Rein Lenting
+ */
+
+#include "ui.h"
+
+char user_interface(void);
+char user_interface_line(void);
+char uder_interface_bitmap(void);
+char user_interface_rectangle(void);
+
+char char_user_input(void);
+int value_user_input(void);
+
+
+//Main User interface.
+//Puts the settings and asks for user input
+//---------------------------------------------------------------------------------------------
+char user_interface(void)
+{
+	char buffer = 0;
+
+	while(buffer == 0)
+	{
+		UART_puts("VGA scherm control interface\n");
+		UART_puts("[1]Draw line\n");
+		UART_puts("[2]Draw bitmap\n");
+		UART_puts("[3]Draw rectangle\n");
+
+		buffer = num_user_input();
+
+		if((buffer >= 48) && (buffer <= 52)) break;
+		else
+		{
+			UART_puts("wrong input\n");
+			buffer = 0;
+		}
+	}
+	return buffer;
+}
+
+char user_interface_line(void)
+{
+	int input = 0;
+	int point_a = 0;
+	int point_b = 0;
+
+	UART_puts("	Draw line settigs\n");
+	UART_puts("[1]change line point a, currently: ");
+	UART_putchar(point_a);
+	UART_puts("\n");
+	UART_puts("[2]change line point b, currently:");
+	UART_putchar(point_b);
+	UART_puts("\n");
+	UART_puts("[3]Exit");
+
+	input = value_user_input;
+}
+
+char uder_interface_bitmap(void)
+{
+
+
+}
+
+char user_interface_rectangle(void)
+{
+
+
+}
+
+
+
+//Function that wil wait for a user input.
+//When user input detected will return the value as a char
+//--------------------------------------------------------------------------------------------
+char char_user_input(void)
+{
+	char buf = -1;
+
+	while(buf ==255)
+	{
+		buf = UART_get();
+	}
+	return buf;
+}
+
+int value_user_input(void)
+{
+	int return_var = 0;
+	char buffer[8];
+
+	UART_gets(buffer, 1);
+
+	return_var = atoi(buffer);
+
+	return(return_var);
+}
+
+

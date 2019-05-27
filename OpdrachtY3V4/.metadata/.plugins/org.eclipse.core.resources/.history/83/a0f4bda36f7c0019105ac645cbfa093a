@@ -1,0 +1,140 @@
+/*
+ * ui.c
+ *
+ *  Created on: 21 May 2019
+ *      Author: Rein Lenting
+ */
+
+#include "ui.h"
+
+char user_interface(void);
+int user_interface_line(void);
+void user_interface_bitmap(void);
+void user_interface_rectangle(void);
+
+char char_user_input(void);
+int value_user_input(void);
+
+
+//Main User interface.
+//Puts the settings and asks for user input
+//---------------------------------------------------------------------------------------------
+char user_interface(void)
+{
+	char buffer = 0;
+
+	while(buffer == 0)
+	{
+		UART_puts("VGA scherm control interface\n");
+		UART_puts("[1]Draw line\n");
+		UART_puts("[2]Draw bitmap\n");
+		UART_puts("[3]Draw rectangle\n");
+
+		buffer = char_user_input();
+
+		switch(buffer)
+		{
+			case 49:
+				user_interface_line();
+				break;
+			case 50:
+				user_interface_bitmap(void);
+				break;
+			case 51:
+				user_interface_rectangle();
+				break;
+			default:
+				UART_puts("bad input\n");
+		}
+	}
+	return buffer;
+}
+
+int user_interface_line(void)
+{
+	char input = 0;
+	int i = 0;
+
+	int point_a = 0;
+	int point_b = 0;
+
+
+	while(i == 0)
+	{
+		UART_puts("	Draw line settings\n");
+		UART_puts("[1]change line point a, currently: ");
+		UART_putchar(point_a);
+		UART_puts("\n");
+		UART_puts("[2]change line point b, currently:");
+		UART_putchar(point_b);
+		UART_puts("\n");
+		UART_puts("[3]Draw line\n");
+		UART_puts("[4]Exit\n");
+
+		input = char_user_input();
+
+		switch(input)
+		{
+			case 49:
+				UART_puts("insert a number for point a\n");
+				point_a = value_user_input();
+				break;
+			case 50:
+				UART_puts("insert a number for point b\n");
+				point_b = value_user_input();
+				break;
+			case 51:
+				//Draw line function
+				break;
+			case 52:
+				UART_puts("Returning to main screen\n");
+				i = 1;
+				break;
+			default:
+				UART_puts("Bad input, return to main screen");
+				i = 1;
+		}
+	}
+
+	return input;
+}
+
+void uder_interface_bitmap(void)
+{
+
+}
+
+void user_interface_rectangle(void)
+{
+
+}
+
+
+
+//Function that wil wait for a user input.
+//When user input detected will return the value as a char
+//--------------------------------------------------------------------------------------------
+char char_user_input(void)
+{
+	char buf = -1;
+
+	while(buf ==255)
+	{
+		buf = UART_get();
+	}
+	return buf;
+}
+
+int value_user_input(void)
+{
+	int return_var = 0;
+	char buffer[8];
+
+	UART_gets(buffer, 1);
+
+	return_var = atoi(buffer);
+
+	return(return_var);
+}
+
+
