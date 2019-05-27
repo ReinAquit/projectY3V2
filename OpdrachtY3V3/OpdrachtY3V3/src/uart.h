@@ -10,6 +10,8 @@
 
 #include"main.h"
 
+void UART_init(void);
+
 char UART_get(void);
 void UART_gets(char *s, int echo);
 void UART_putchar(char c);

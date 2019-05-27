@@ -73,8 +73,6 @@ void UART_init(void)
 		for (i=0; s[i]; i++)
 		{
 			UART_putchar(s[i]);
-			//while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
-			//USART_SendData(USART2, s[i]);
 		}
 	}
 

@@ -7,16 +7,6 @@
 
 #include "ui.h"
 
-char user_interface(void);
-int user_interface_line(void);
-void user_interface_bitmap(void);
-void user_interface_rectangle(void);
-void user_interface_clear(void);
-
-char char_user_input(void);
-int value_user_input(void);
-
-
 //Main User interface.
 //Puts the settings and asks for user input
 //---------------------------------------------------------------------------------------------
@@ -70,6 +60,7 @@ int user_interface_line(void)
 
 	while(i == 0)
 	{
+		//Puts main  interface settings
 		UART_puts("	Draw line settings\n");
 
 		UART_puts("[1]Change line point x1, currently: ");
@@ -95,8 +86,10 @@ int user_interface_line(void)
 		UART_puts("[5]Draw line\n");
 		UART_puts("[6]Exit\n");
 
+		//Waits for user input
 		input = char_user_input();
 
+		//Proceses user input
 		switch(input)
 		{
 			case 49:
@@ -131,16 +124,21 @@ int user_interface_line(void)
 	return input;
 }
 
+//Function ready for programming
 void user_interface_bitmap(void)
 {
 
 }
+
+//Function ready for programming
 
 void user_interface_rectangle(void)
 {
 
 }
 
+//Function for the ui, clearing the screen
+// Asks if u are shure.
 void user_interface_clear(void)
 {
 	int input = 0;
@@ -149,6 +147,7 @@ void user_interface_clear(void)
 
 	while(input == 0)
 	{
+		//Puts main interface text
 		UART_puts("Are you sure you want to clear?\n");
 		UART_puts("The clear colour (0 - 255) is :");
 		itoa(colour,sbuffer,10);
@@ -159,8 +158,10 @@ void user_interface_clear(void)
 		UART_puts("[2]Yes\n");
 		UART_puts("[3]No\n");
 
+		//Waiting for user input
 		input = char_user_input();
 
+		//Proceses user input
 		switch(input)
 		{
 			case 49:
@@ -197,6 +198,9 @@ char char_user_input(void)
 	return buf;
 }
 
+//Function that wil wait for a user input.
+//When user input detected will return the value as a int
+//--------------------------------------------------------------------------------------------
 int value_user_input(void)
 {
 	int return_var = 0;
